@@ -1,8 +1,17 @@
+import { SettingsPanel } from './features/settings/SettingsPanel'
+
 function App() {
   return (
-    <div style={{ padding: '16px', fontFamily: 'sans-serif' }}>
-      <h1>Hello World - Side Panel</h1>
-      <p>This is running in the Chrome Side Panel.</p>
+    <div className="app-container">
+      {/* App Header */}
+      <header className="app-header">
+        <h1 className="app-title">QA Documenter</h1>
+      </header>
+
+      {/* Main Content Area */}
+      <main className="app-main">
+        <SettingsPanel />
+      </main>
     </div>
   )
 }

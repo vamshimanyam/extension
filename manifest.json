@@ -1,13 +1,34 @@
 {
   "manifest_version": 3,
-  "name": "Hello World Extension",
-  "version": "1.0.0",
-  "description": "A minimal React + TypeScript Chrome extension",
-  "permissions": ["sidePanel"],
+  "name": "QA Session Documenter",
+  "version": "0.1.0",
+  "description": "Capture, document, and export QA test sessions without interrupting your flow.",
+  "permissions": [
+    "sidePanel",
+    "storage"
+  ],
   "side_panel": {
     "default_path": "ui/index.html"
   },
+  "background": {
+    "service_worker": "worker/background.ts",
+    "type": "module"
+  },
   "action": {
-    "default_title": "Open QA Documenter"
+    "default_title": "Open QA Session Documenter"
+  },
+  "commands": {
+    "capture-silent": {
+      "suggested_key": { "default": "Alt+Shift+1", "mac": "Alt+Shift+1" },
+      "description": "Silent capture"
+    },
+    "capture-note": {
+      "suggested_key": { "default": "Alt+Shift+2", "mac": "Alt+Shift+2" },
+      "description": "Capture with note"
+    },
+    "capture-part": {
+      "suggested_key": { "default": "Alt+Shift+3", "mac": "Alt+Shift+3" },
+      "description": "Capture specific part"
+    }
   }
 }
