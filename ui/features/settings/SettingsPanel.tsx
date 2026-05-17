@@ -27,7 +27,7 @@ const executeFetch = (
 // 800ms is used here to safely bridge the standard OS keyboard repeat delay (which is typically 500ms).
 // If we used 500ms, holding down the Enter key would cause the first debounce to resolve at the exact
 // moment the OS starts spamming repeat clicks, resulting in a double fetch.
-const debouncedFetchCommands = debounce(executeFetch, 800);
+const debouncedFetchCommands = debounce(executeFetch, 500);
 
 export function SettingsPanel() {
   const [commands, setCommands] = useState<Command[]>([]);
