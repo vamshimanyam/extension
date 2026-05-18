@@ -27,7 +27,7 @@ const executeFetch = (
 // 800ms is used here to safely bridge the standard OS keyboard repeat delay (which is typically 500ms).
 // If we used 500ms, holding down the Enter key would cause the first debounce to resolve at the exact
 // moment the OS starts spamming repeat clicks, resulting in a double fetch.
-const debouncedFetchCommands = debounce(executeFetch, 500);
+const debouncedFetchCommands = debounce(executeFetch as (...args: unknown[]) => void, 500);
 
 export function SettingsPanel() {
   const [commands, setCommands] = useState<Command[]>([]);
@@ -54,7 +54,7 @@ export function SettingsPanel() {
     <div className="settings-container">
       <header className="settings-header">
         <Settings size={24} color="var(--accent)" aria-hidden="true" />
-        <h2 className="settings-title" id="settings-title">Settings</h2>
+        <h2 className="settings-title" id="settings-title" tabIndex={-1}>Settings</h2>
       </header>
 
       <section className="settings-section" aria-labelledby="shortcuts-title">
@@ -102,10 +102,9 @@ export function SettingsPanel() {
           onClick={openShortcutsSettings}
           className="btn-primary"
           type="button"
-          aria-label="Change Shortcuts in Chrome, opens in a new tab"
         >
           Change Shortcuts in Chrome
-          <ExternalLink size={16} aria-hidden="true" />
+          <ExternalLink size={16} aria-label=', opens in a new tab' />
         </button>
       </section>
     </div>

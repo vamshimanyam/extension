@@ -147,5 +147,5 @@
 }
 
 .btn-primary:hover {
-  background: var(--accent-hover);
+  background: rgba(240, 120, 64, 0.8);
 }
