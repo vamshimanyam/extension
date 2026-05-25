@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "QA Session Documenter",
   "version": "0.1.0",
-  "description": "Capture, document, and export QA test sessions without interrupting your flow.",
+  "description": "Quickly capture, organize, and export QA test sessions without breaking your workflow.",
   "permissions": [
     "sidePanel",
     "storage"
@@ -11,7 +11,7 @@
     "default_path": "ui/index.html"
   },
   "background": {
-    "service_worker": "worker/background.ts",
+    "service_worker": "background/index.ts",
     "type": "module"
   },
   "action": {
@@ -20,15 +20,15 @@
   "commands": {
     "capture-silent": {
       "suggested_key": { "default": "Alt+Shift+1", "mac": "Alt+Shift+1" },
-      "description": "Silent capture"
+      "description": "Capture silently (no popup)"
     },
     "capture-note": {
       "suggested_key": { "default": "Alt+Shift+2", "mac": "Alt+Shift+2" },
-      "description": "Capture with note"
+      "description": "Capture and add a note"
     },
     "capture-part": {
       "suggested_key": { "default": "Alt+Shift+3", "mac": "Alt+Shift+3" },
-      "description": "Capture specific part"
+      "description": "Capture a selected region"
     }
   }
 }

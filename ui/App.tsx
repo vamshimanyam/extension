@@ -1,5 +1,5 @@
 import { SettingsPanel } from './features/settings/SettingsPanel'
-import useUiStore from '../store/useUiStore'
+import useUiStore from './store/useUiStore'
 import FooterNav from './components/FooterNav'
 import useFocusOnNavigate from './hooks/useFocusOnNavigate'
 

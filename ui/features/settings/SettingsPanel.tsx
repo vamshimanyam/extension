@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Settings, ExternalLink, Keyboard, RefreshCw } from 'lucide-react';
 import { debounce } from '../../../utils/debounce';
-import './SettingsPanel.css';
+import './SettingsPanel.scss';
 
 interface Command {
   name: string;
