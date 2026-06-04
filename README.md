@@ -1,73 +1,74 @@
-# React + TypeScript + Vite
+# QA Session Documenter
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+QA Session Documenter is a Manifest V3 browser extension for capturing, organizing, and exporting manual QA test sessions. It lets a tester use keyboard shortcuts to capture browser screenshots, page context, notes, selected technical evidence, and report-ready session timelines.
 
-Currently, two official plugins are available:
+The extension is local-first: sessions, steps, screenshots, settings, and backups are stored in the browser through IndexedDB and `chrome.storage.local`.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## What It Includes
 
-## React Compiler
+- Manifest V3 background service worker for commands, capture, routing, and technical data buffers.
+- React side panel UI for sessions, timeline, step editing, settings, storage dashboard, and exports.
+- IndexedDB storage split across sessions, steps, screenshots, and settings.
+- Screenshot capture with optional Web Worker image processing and inline fallback.
+- Region capture through on-demand script injection.
+- Optional network and console evidence attachment.
+- DOCX, PDF, and JSON backup export flows.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Documentation
 
-## Expanding the ESLint configuration
+Start here if you are new to browser extension development:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- [Browser extension rebuild guide](docs/browser-extension-rebuild-guide.md)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Additional product and engineering reference:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- [QA extension complete docs](QA-Extension-Complete-Docs.md)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Development
+
+Install dependencies:
+
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Run the Vite development server:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+Build the extension:
+
+```bash
+npm run build
+```
+
+Lint the project:
+
+```bash
+npm run lint
+```
+
+## Loading The Extension
+
+For the most reliable local test flow:
+
+1. Run `npm run build`.
+2. Open `chrome://extensions` or `edge://extensions`.
+3. Enable Developer Mode.
+4. Choose Load unpacked.
+5. Select the generated `dist` folder.
+
+Then click the extension action to open the side panel, or use the configured keyboard shortcuts.
+
+## Main Shortcuts
+
+| Shortcut | Mode |
+| --- | --- |
+| `Ctrl+Shift+S` / `Command+Shift+S` | Silent capture |
+| `Ctrl+Shift+N` / `Command+Shift+N` | Capture with note |
+| `Ctrl+Shift+D` / `Command+Shift+D` | Capture with technical data |
+| `Ctrl+Shift+R` / `Command+Shift+R` | Region capture |
+
+Chrome and Edge let users override shortcuts at `chrome://extensions/shortcuts`.

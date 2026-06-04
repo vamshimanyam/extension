@@ -10,7 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@radix-ui/themes": "^3.3.0",
+    "docx": "^9.7.1",
+    "html2canvas": "^1.4.1",
     "idb": "^8.0.3",
+    "jspdf": "^4.2.1",
     "lucide-react": "^1.16.0",
     "nanoid": "^5.1.11",
     "react": "^19.2.6",
@@ -29,6 +33,7 @@
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.2",
     "globals": "^17.6.0",
+    "sass": "^1.70.0",
     "typescript": "~6.0.2",
     "typescript-eslint": "^8.59.2",
     "vite": "^8.0.12"

@@ -4,8 +4,16 @@
   "version": "0.1.0",
   "description": "Quickly capture, organize, and export QA test sessions without breaking your workflow.",
   "permissions": [
+    "activeTab",
+    "tabs",
+    "commands",
+    "scripting",
+    "webRequest",
     "sidePanel",
     "storage"
+  ],
+  "host_permissions": [
+    "<all_urls>"
   ],
   "side_panel": {
     "default_path": "ui/index.html"
@@ -19,16 +27,23 @@
   },
   "commands": {
     "capture-silent": {
-      "suggested_key": { "default": "Alt+Shift+1", "mac": "Alt+Shift+1" },
+      "suggested_key": { "default": "Ctrl+Shift+S", "mac": "Command+Shift+S" },
       "description": "Capture silently (no popup)"
     },
     "capture-note": {
-      "suggested_key": { "default": "Alt+Shift+2", "mac": "Alt+Shift+2" },
+      "suggested_key": { "default": "Ctrl+Shift+N", "mac": "Command+Shift+N" },
       "description": "Capture and add a note"
     },
-    "capture-part": {
-      "suggested_key": { "default": "Alt+Shift+3", "mac": "Alt+Shift+3" },
+    "capture-tech": {
+      "suggested_key": { "default": "Ctrl+Shift+D", "mac": "Command+Shift+D" },
+      "description": "Capture with technical data"
+    },
+    "capture-region": {
+      "suggested_key": { "default": "Ctrl+Shift+R", "mac": "Command+Shift+R" },
       "description": "Capture a selected region"
     }
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'none'; base-uri 'none';"
   }
 }

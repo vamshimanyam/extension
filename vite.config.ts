@@ -7,12 +7,6 @@ import manifest from './manifest.json'
 const crxFix = {
   name: 'crx-fix',
   enforce: 'post' as const,
-  options(options: any) {
-    if (options && options.platform) {
-      delete options.platform;
-    }
-    return options;
-  }
 }
 
 export default defineConfig({

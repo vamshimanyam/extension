@@ -12,6 +12,8 @@
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
     "moduleDetection": "force",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
     "noEmit": true,
     "jsx": "react-jsx",
 
@@ -21,5 +23,5 @@
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["ui", "background", "content", "worker", "messaging", "types", "config", "store"]
+  "include": ["ui", "background", "content", "worker", "messaging", "types", "config", "store", "utils"],
 }

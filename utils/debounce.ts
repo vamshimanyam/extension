@@ -1,10 +1,10 @@
-export function debounce<T extends (...args: unknown[]) => void>(
-  func: T,
+const debounce = <Args extends readonly unknown[], F extends (...args: Args) => void>(
+  func: F,
   wait: number
-): (...args: Parameters<T>) => void {
+): (...args: Args) => void => {
   let timeout: ReturnType<typeof setTimeout> | null = null;
-  
-  return function (...args: Parameters<T>) {
+
+  return function (...args: Args) {
     if (timeout) {
       clearTimeout(timeout);
     }
@@ -12,4 +12,6 @@ export function debounce<T extends (...args: unknown[]) => void>(
       func(...args);
     }, wait);
   };
-}
+};
+
+export default debounce;

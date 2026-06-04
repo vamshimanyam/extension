@@ -1,15 +1,16 @@
 import {create} from 'zustand'
 
-export type View = 'home' | 'settings' | 'sessions'
+export const tabs = ['home', 'sessions', 'settings'] as const;
+export type TabsType = (typeof tabs)[number];
 
 interface UiState {
-  view: View
-  setView: (v: View) => void
+  view: TabsType
+  setView: (v: TabsType) => void
 }
 
 const useUiStore = create<UiState>((set) => ({
   view: 'home',
-  setView: (v: View) => set({ view: v }),
+  setView: (v: TabsType) => set({ view: v }),
 }))
 
 export default useUiStore
